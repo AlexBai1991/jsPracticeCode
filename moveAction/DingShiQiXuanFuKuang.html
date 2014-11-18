@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>定时器运动基础悬浮框实例</title>
+	<meta charset="UTF-8">
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#div1{
+		width: 100px;
+		height: 200px;
+		background: red;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+	}	
+	</style>
+	<script>
+	window.onscroll = function (){
+		var div1 = document.getElementById('div1');
+		
+		//兼容浏览器获取scrollTop值
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		//这种情况下，会出现抖动的卡顿状态，因此对其使用运动框架
+		//div1.style.top = scrollTop + document.documentElement.clientHeight - div1.offsetHeight + 'px';
+		
+		startMove(scrollTop + parseInt((document.documentElement.clientHeight - div1.offsetHeight)/2));
+	};
+
+	var timer = null;	//定时器变量
+
+	function startMove(iTarget){
+		var div1 = document.getElementById('div1');
+
+		clearInterval(timer);
+		timer = setInterval(function (){
+			var speed = (iTarget - div1.offsetTop)/4; 
+			speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+			if(div1.offsetTop == iTarget){
+				clearInterval(timer);
+			}else{
+				div1.style.top = div1.offsetTop + speed + 'px';
+			}
+		}, 30);
+	}
+	</script>
+</head>
+<body style="height:2000px">
+	<div id="div1"></div>
+</body>
+</html>

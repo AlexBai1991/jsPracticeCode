@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>定时器运动基础分享到实例</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#div1{
+		width: 150px;
+		height: 200px;
+		background: #DDD;
+		position: absolute;
+		left: -150px;
+
+	}
+	#div1 span{
+		width: 20px;
+		height: 60px;
+		line-height: 20px;
+		position: absolute;
+		right: -20px;
+		top: 70px;
+		color: #FFF;
+		background: blue;
+	}
+	</style>
+	<script>
+	window.onload = function(){
+		var div1 = document.getElementById('div1');
+		div1.onmouseover = function (){
+			startMove2(0);		//右移动
+		};
+		div1.onmouseout = function (){
+			startMove2(-150);	//左移动
+		};
+	};
+	//定义定时器变量
+	var timer = null;
+	
+	/**
+	*	匀速运动
+	*	@params iTarget 运动目的位置值
+	**/
+	function startMove(iTarget){
+		var div1 = document.getElementById('div1');
+
+		//开定时器之前需要清除已开的定时器
+		clearInterval(timer);
+		timer = setInterval(function(){		
+			var speed = 0;			//定义变量存储速度值
+			//获取匀速运动速度值
+			if(div1.offsetLeft < iTarget){
+				speed = 7;
+			}else{
+				speed = -7;
+			}
+			//如果速度speed值取得不合适，则会出现运动不到指定的位置的情况
+			if(Math.abs(iTarget - div1.offsetLeft) <= 7){				
+				clearInterval(timer);
+				div1.style.left = iTarget + "px";
+			}else{
+				div1.style.left = div1.offsetLeft + speed + "px"; 
+			}			
+		}, 30);		
+	}
+	/**
+	*	缓冲运动，变速运动
+	*	@params iTarget 运动目的位置值
+	**/
+	function startMove2(iTarget){
+		var div1 = document.getElementById('div1');
+		
+		clearInterval(timer);
+		//开启定时器
+		timer = setInterval(function (){
+			//设定运动速度,速度是随着与目标位置目标的距离的减小而递减的
+			var speed = (iTarget - div1.offsetLeft)/5;
+			//speed可能不为整数,因此将其向上或者向下取整
+			speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+			if(div1.offsetLeft == iTarget){
+				clearInterval(timer);
+			}else{
+				div1.style.left = div1.offsetLeft + speed + "px";
+			}
+		}, 30);
+
+
+	}	
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<span>分享到</span>
+	</div>
+</body>
+</html>
