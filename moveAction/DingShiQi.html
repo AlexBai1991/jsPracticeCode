@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>定时器运动基础</title>
+	<style type="text/css">
+	#div1{
+		width: 200px;
+		height: 200px;
+		background-color: red;
+		position: absolute;
+		top: 50px;
+		left: 0;
+	}
+	</style>
+	<script>
+		window.onload = function(){
+
+		};
+		
+		var timer = null;
+		function startMove(){
+			var div1 = document.getElementById('div1');
+			var speed = 1;
+			//开启定时器之前都要先关闭之前已经打开的定时器
+			clearInterval(timer);
+			timer = setInterval(function(){
+				if(div1.offsetLeft >= 300){
+					//清除定时器
+					clearInterval(timer);
+				}else{
+					div1.style.left = div1.offsetLeft + speed + 'px';
+				}
+
+			}, 30);	
+			cons(timer);	
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="开始运动" onclick="startMove()"/>
+	<div id="div1"></div>
+</body>
+</html>
