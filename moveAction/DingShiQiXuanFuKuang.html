@@ -22,6 +22,7 @@
 		var div1 = document.getElementById('div1');
 		
 		//兼容浏览器获取scrollTop值
+		// on mac
 		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
 		//这种情况下，会出现抖动的卡顿状态，因此对其使用运动框架
 		//div1.style.top = scrollTop + document.documentElement.clientHeight - div1.offsetHeight + 'px';
