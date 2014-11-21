@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>横向导航下拉菜单JS</title>
+	<meta charset="UTF-8">
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	li{
+		list-style:  none;
+	}
+	a{
+		text-decoration: none;
+		color: #999;
+	}
+	#nav{
+		width: 600px;
+		height: 40px;
+		background-color: #EEE;
+		margin: 5px  auto 0;
+	}
+	#nav li{
+		float: left;
+		position: relative;
+	}
+	#nav li a{
+		display: block;
+		padding: 0 20px;
+		line-height: 40px;
+	}
+	#nav li a:hover{
+		color: #FFF;
+		background-color: #CCC;
+	}
+	#nav li ul{
+		display: none;
+		width: 120px;
+		position: absolute;
+		left: 0;
+		top: 40px;
+	}
+	#nav .liHover ul{
+		display: block;
+	}
+	#nav li ul li{
+		float: none;
+		background-color: #EEE;
+		margin-top: 2px;
+		text-align: left;
+	}
+	#nav li ul li a:hover{
+		background-color: blue;
+	}
+	</style>
+	<script type="text/javascript">
+		//使用原声js实现下拉菜单的现实隐藏
+		window.onload = function () {
+			var nav = document.getElementById('nav');
+			var ul = nav.getElementsByTagName('ul')[0];
+			var lis = ul.childNodes;
+
+			for(var i=0; i<lis.length; i++){
+				var liItem = lis[i];
+				if(liItem.nodeName == 'LI'){
+					//循环查找一级菜单项下是否有二级菜单，有则进行显示隐藏二级菜单的操作
+					if(liItem.getElementsByTagName('ul').length > 0){
+						//鼠标移入
+						liItem.onmouseover = function (){
+							//this.className = 'liHover';	//添加liHover类
+							addClass(this, 'liHover');
+						};
+						//鼠标移出
+						liItem.onmouseout = function (){
+							//this.className = '';		//删除liHover类
+							removeClass(this, 'liHover');
+						};
+					}
+				}
+			}
+		};
+		//判断某个obj元素是否拥有cls类
+		function hasClass(obj, cls){
+			return obj.className.match(new RegExp("(\\s|^)"+cls+"(\\s|$)"));
+		}
+		//为obj添加cls
+		function addClass(obj, cls){
+			if(!hasClass(obj, cls)){
+				obj.className += " "+cls;
+			}
+		}
+		//为obj删除cls类
+		function removeClass(obj, cls){
+			if(hasClass(obj, cls)){
+				var reg = new RegExp("(\\s|^)"+cls+"(\\s|$)");
+				obj.className = obj.className.replace(reg, "");
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<div id="nav">
+		<ul>
+			<li><a href="#">首页</a></li>
+			<li>
+				<a href="#">新闻中心</a>
+				<ul>
+					<li><a href="##">百度新闻</a></li>
+					<li><a href="##">凤凰新闻</a></li>
+					<li><a href="##">新浪新闻</a></li>
+					<li><a href="##">搜狐新闻</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">视频中心</a>
+				<ul>
+					<li><a href="##">百度视频</a></li>
+					<li><a href="##">新浪视频</a></li>
+					<li><a href="##">搜狐视频</a></li>
+				</ul>
+			</li>
+			<li><a href="#">体育直播</a></li>
+			<li><a href="#">电影</a></li>
+		</ul>
+	</div>
+</body>
+</html>
