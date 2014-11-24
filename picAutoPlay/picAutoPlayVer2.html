@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>图片轮播</title>
+	<meta charset="UTF-8">
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	a{
+		text-decoration: none;
+	}
+	li{
+		list-style: none;
+	}
+	#picture{
+		width: 520px;
+		height: 400px;
+		margin: 20px auto 0;
+		background-color: #999; 
+	}
+	#picCon{
+		width: 520px;
+		height: 280px;
+	
+		position: relative;
+	}
+	#picCon li{
+		width: 520px;
+		height: 280px;
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 0;
+		overflow: hidden;
+	}
+	#picCon .prev{
+		width: 60px;
+		height: 60px;
+		background: url(img/btn.gif) no-repeat left top; 
+		position: absolute;
+		left: 30px;
+		top: 110px;
+		opacity: 0;
+		filter: alpha(opacity:0);
+		z-index: 3001;
+	}
+	#picCon .next{
+		width: 60px;
+		height: 60px;
+		background: url(img/btn.gif) no-repeat left -60px; 
+		position: absolute;
+		right: 30px;
+		top: 110px;
+		opacity: 0;
+		filter: alpha(opacity:0);
+		z-index: 3001;
+	}
+	#picCon .markLeft{
+		width: 260px;
+		height: 280px;
+		background: red;
+		position: absolute;
+		left: 0;
+		top: 0;
+		opacity: 0;
+		filter: aipha(opacity:0);
+		z-index: 3000;
+	}
+	#picCon .markRight{
+		width: 260px;
+		height: 280px;
+		background: green;
+		position: absolute;
+		right: 0;
+		top: 0;
+		opacity: 0;
+		filter: aipha(opacity:0);
+		z-index: 3000;
+	}
+	#picSmall{
+		width: 500px;
+		height: 100px;
+		position: relative;
+		left: 15px;
+		top: 10px;	
+		overflow: hidden;
+	}
+	#picSmall ul{
+		height: 100px;
+		position: absolute; 
+		top: 0; 
+		left: 0; 
+	}
+	#picSmall ul li{
+		width: 115px;
+		height: 100px;
+		padding-right: 10px; 
+		float: left;
+		filter: alpha(opacity:50);
+		opacity: 0.5;
+	}
+	#picSmall ul li img{
+		width: 115px;
+		height: 100px;
+	}
+	</style>
+	<script src="move.js"></script>
+	<script>
+	function getByClass(oParent, sClass)
+	{
+		var aEle=oParent.getElementsByTagName('*');
+		var aResult=[];
+		
+		for(var i=0;i<aEle.length;i++)
+		{
+			if(aEle[i].className==sClass)
+			{
+				aResult.push(aEle[i]);
+			}
+		}
+		
+		return aResult;
+	}
+	window.onload = function (){
+
+		//获取相关元素
+		var picture = document.getElementById('picture');
+		var picCon = document.getElementById('picCon');
+		var markLeft = getByClass(picCon, "markLeft")[0];
+		var markRight = getByClass(picCon, "markRight")[0];
+
+		var prevBtn = getByClass(picCon, "prev")[0];
+		var nextBtn = getByClass(picCon, "next")[0];
+		var picConLis = picCon.getElementsByTagName("li");
+
+		var picSmall = document.getElementById("picSmall");
+		var picSmallUl = picSmall.getElementsByTagName("ul")[0];
+		var picSmallLis = picSmall.getElementsByTagName("li");
+
+		//全局变量
+		var now = 0;
+		var nowIndex = 2;
+		var timer = null;
+		
+		picSmallUl.style.width = picSmallLis.length * picSmallLis[0].offsetWidth + "px";
+		
+
+		prevBtn.onmouseover = markLeft.onmouseover = function (){
+			startMove(prevBtn, "opacity", 100);
+		};
+		prevBtn.onmouseout = markLeft.onmouseout = function (){
+			startMove(prevBtn, "opacity", 0);
+		};
+
+		nextBtn.onmouseover = markRight.onmouseover = function (){
+			startMove(nextBtn, "opacity", 100);
+		};
+		nextBtn.onmouseout = markRight.onmouseout = function (){
+			startMove(nextBtn, "opacity", 0);
+		};
+
+		prevBtn.onclick = function (){
+			now--;
+			if(now == -1){
+				now = picConLis.length - 1;
+			}
+			tab();
+		};
+
+		nextBtn.onclick = function (){
+			now++;
+			if(now == picConLis.length){
+				now = 0;
+			}
+			tab();
+		};
+		/**
+		*
+		*
+		**/
+		function tab(){
+			//切换显示大图
+			picConLis[now].style.zIndex = nowIndex++;
+
+			//切换显示小图透明度
+			for(var i=0;i<picSmallLis.length;i++){
+				startMove(picSmallLis[i], "opacity", 50);
+			}
+			startMove(picSmallLis[now], "opacity", 100);
+
+			picConLis[now].style.width=0;
+			startMove(picConLis[now], 'width', 520);
+			//小图导航滚动
+			if(now == 0){
+				startMove(picSmallUl, "left", 0);
+			}else if(now == picSmallLis.length - 2){
+				startMove(picSmallUl, "left", -(now-2)*picSmallLis[0].offsetWidth);
+			}else if(now == picSmallLis.length - 1){
+				startMove(picSmallUl, "left", -(now-3)*picSmallLis[0].offsetWidth);
+			}else{
+				startMove(picSmallUl, "left", -(now-1)*picSmallLis[0].offsetWidth);
+			}
+		}
+		//小图控制切换大图
+		for(var i = 0;i<picSmallLis.length;i++){
+			picSmallLis[i].index = i;
+			picSmallLis[i].onclick = function (){
+				if(this.index == now) return;
+				now = this.index;
+				tab();
+			};
+			picSmallLis[i].onmouseover = function (){
+				if(this.index == now){
+					return;
+				}
+				startMove(this, "opacity", 100);
+			};	
+			picSmallLis[i].onmouseout = function (){
+				if(this.index == now){
+					return;
+				}
+				startMove(this, "opacity", 50);
+			};	
+		}
+		//自动滚动图片
+		clearInterval(timer);
+		timer = setInterval(nextBtn.onclick, 2000);
+		picture.onmouseover = function (){
+			clearInterval(timer);
+		};
+		picture.onmouseout = function (){
+			timer = setInterval(nextBtn.onclick, 2000);
+		};
+
+
+
+	};
+	</script>
+</head>
+<body>	
+	<div id="picture">
+		<ul id="picCon">
+			<li style="z-index:1"><a href="#"><img src="img/1.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/2.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/3.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/4.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/5.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/6.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/7.jpg" alt=""></a></li>
+			
+			<div class="prev"></div>
+			<div class="next"></div>
+			<a class="markLeft" href="javascript:;"></a>
+			<a class="markRight" href="javascript:;"></a>
+		</ul>
+		<div id="picNum">
+			<a href="#" class="active"></a>
+			<a href="#"></a>
+			<a href="#"></a>
+			<a href="#"></a>
+		</div>
+		<div id="picSmall">
+			<ul>
+				<li style="filter: 100; opacity: 1;"><a href="javascript:;"><img src="img/1.jpg" alt=""></a></li>
+				<li><img src="img/2.jpg" alt=""></li>
+				<li><img src="img/3.jpg" alt=""></li>
+				<li><img src="img/4.jpg" alt=""></li>
+				<li><img src="img/5.jpg" alt=""></li>
+				<li><img src="img/6.jpg" alt=""></li>
+				<li><img src="img/7.jpg" alt=""></li>
+			</ul>
+		</div>		
+	</div>
+</body>
+</html>
