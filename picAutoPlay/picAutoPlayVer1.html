@@ -8,6 +8,9 @@
 		margin: 0;
 		padding: 0;
 	}
+	body{
+		background-color: #999;
+	}
 	a{
 		text-decoration: none;
 	}
@@ -15,20 +18,20 @@
 		list-style: none;
 	}
 	#picture{
-		margin: 30px auto;
+		margin: 50px auto 0;
 		width: 600px;
 		height: 400px;
-		border: 1px solid #DDD;
 		position: relative;
 		overflow: hidden;
 	}
 	#picture ul{
-		overflow: auto;
-		width: 3600px;
+		height: 400px;
 		position: absolute;
 		top: 0;
 	}
 	#picture ul li{
+		width: 600px;
+		height: 400px;
 		float: left;
 		display: block;
 	}
@@ -95,107 +98,106 @@
 		right: 20px;
 	}
 	</style>
+	<script src="move.js"></script>
 	<script type="text/javascript">
 	window.onload = function (){
-		var timer = null;
+		var picture = document.getElementById("picture");
 		var picCon = document.getElementById('picCon');
 		var picNum = document.getElementById('picNum');
 		var prev = document.getElementById('prev');
 		var next = document.getElementById('next');
 
-		var picIndex = 1;
+		var picConLis = picCon.getElementsByTagName("li");
 
 		var picNumItems = picNum.getElementsByTagName('a');
+		
+		//全局变量
+		var picIndex = 1;
+		var timer = null;
 
+		picCon.style.width = picConLis[0].offsetWidth * picConLis.length + "px";
+		
 		//下张图片按钮
-		next.onclick = function(){
-			if(picIndex == 4){
-				picIndex = 1;
-			}else{
-				picIndex ++;
+		next.onclick = function (){
+			picIndex++;
+			if(picIndex == picConLis.length){
+				picIndex = 2;
+				picCon.style.left = "-600px";
 			}
-			//console.log(picIndex);
-			showPicNum();
-			animate(-600);
+			//图片切换
+			tab();
 		};
 		//上张图片按钮
 		prev.onclick = function(){	
-			if(picIndex == 1){
-				picIndex = 4;
-			}else{
-				picIndex --;
+			
+			picIndex--;
+			if(picIndex == -1){
+				picIndex = picConLis.length - 3;
+				picCon.style.left = -(picConLis.length - 2) * 600 +"px";
 			}
-			showPicNum();
-			animate(600);
+			//图片切换
+			tab();
 		};
 		//为图片导航点加点击事件
 		for(var i=0;i<picNumItems.length;i++){
+			picNumItems[i].index = i;
 			picNumItems[i].onclick = function(){
-				
+				picIndex = this.index+1;
+				tab();
 			};
 		}
+		//设置定时滚动图片
+		clearInterval(timer);
+		timer = setInterval(next.onclick, 2000);
+		picture.onmouseover = function (){
+			clearInterval(timer);
+		};
+		picture.onmouseout = function (){
+			timer = setInterval(next.onclick, 2000);
+		};
 
 
-		//显示图片导航点
-		function showPicNum(){
+		//图片切换和显示导航点
+		function tab(){
+
+			startMove(picCon, "left", -picConLis[0].offsetWidth*picIndex);
+
 			for(var i=0;i<picNumItems.length;i++){
 				if(picNumItems[i].className == 'active'){
 					picNumItems[i].className = '';
 					break;
 				}
 			}
-			picNumItems[picIndex - 1].className = 'active';
-		}
-		//前向后向按钮
-		function animate(offset){
-			var newleft = parseInt(picCon.style.left) + offset;
-			picCon.style.left = newleft +'px';
-			//alert(oleft);
-			if(newleft < -2400){
-				picCon.style.left = -600 + 'px';
-			}
-			if(newleft > -600){
-				picCon.style.left = -2400 + 'px';
+			if(picIndex == picConLis.length - 1){
+				picNumItems[0].className = 'active';
+			}else if(picIndex == 0){
+				picNumItems[picConLis.length - 3].className = 'active';
+			}else{
+				picNumItems[picIndex - 1].className = 'active';
 			}
 		}
 
-		//setInterval(autoPlay, 2000);
-		//图片滚动函数
-		function autoPlay(){
-			var picture = document.getElementById('picture');
-			var ulPic = picture.getElementsByTagName('ul')[0];
-			//var lis = document.getElementsByTagName("li");
-			//for(var i=0;i<lis.length;i++){
-
-
-				var liLeft = ulPic.offsetLeft;
-				//ulPic.style.width = ulPic.offsetWidth * 2;
-				//ulPic.innerHTML += ulPic.innerHTML;
-
-				//alert(liLeft);
-				if(liLeft <= -1800){
-					ulPic.style.left = 0;
-				}else{
-					ulPic.style.left = (liLeft - 600) + 'px';
-				}
-
-			//}
-		}
 	};
 	</script>
 </head>
 <body>	
 	<div id="picture">
 		<ul id="picCon" style="left: -600px;">
-			<li><a href="#"><img src="img/4.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/7.jpg" alt=""></a></li>
 			<li><a href="#"><img src="img/1.jpg" alt=""></a></li>
 			<li><a href="#"><img src="img/2.jpg" alt=""></a></li>
 			<li><a href="#"><img src="img/3.jpg" alt=""></a></li>
 			<li><a href="#"><img src="img/4.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/5.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/6.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/7.jpg" alt=""></a></li>
 			<li><a href="#"><img src="img/1.jpg" alt=""></a></li>
 		</ul>
 		<div id="picNum">
 			<a href="#" class="active"></a>
+			<a href="#"></a>
+			<a href="#"></a>
+			<a href="#"></a>
 			<a href="#"></a>
 			<a href="#"></a>
 			<a href="#"></a>
