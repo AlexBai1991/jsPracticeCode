@@ -39,9 +39,8 @@
 		display: block;
 	}
 	#picture ul li img{
-		width: 598px;
-		height: 398px;
-		border: 1px solid black;
+		width: 600px;
+		height: 400px;
 	}
 	#picture ul .active{
 		display: block;
@@ -128,8 +127,7 @@
 			tab();
 		};
 		//上张图片按钮
-		prev.onclick = function(){	
-			
+		prev.onclick = function(){				
 			picIndex--;
 			if(picIndex == -1){
 				picIndex = picConLis.length - 3;
@@ -142,20 +140,20 @@
 		for(var i=0;i<picNumItems.length;i++){
 			picNumItems[i].index = i;
 			picNumItems[i].onclick = function(){
+				if(picIndex == this.index + 1) return;
 				picIndex = this.index+1;
 				tab();
 			};
 		}
 		//设置定时滚动图片
 		clearInterval(timer);
-		timer = setInterval(next.onclick, 2000);
+		timer = setInterval(next.onclick, 3000);
 		picture.onmouseover = function (){
 			clearInterval(timer);
 		};
 		picture.onmouseout = function (){
-			timer = setInterval(next.onclick, 2000);
+			timer = setInterval(next.onclick, 3000);
 		};
-
 
 		//图片切换和显示导航点
 		function tab(){
@@ -176,14 +174,13 @@
 				picNumItems[picIndex - 1].className = 'active';
 			}
 		}
-
 	};
 	</script>
 </head>
 <body>	
 	<div id="picture">
 		<ul id="picCon" style="left: -600px;">
-			<li><a href="#"><img src="img/7.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/8.jpg" alt=""></a></li>
 			<li><a href="#"><img src="img/1.jpg" alt=""></a></li>
 			<li><a href="#"><img src="img/2.jpg" alt=""></a></li>
 			<li><a href="#"><img src="img/3.jpg" alt=""></a></li>
@@ -191,10 +188,12 @@
 			<li><a href="#"><img src="img/5.jpg" alt=""></a></li>
 			<li><a href="#"><img src="img/6.jpg" alt=""></a></li>
 			<li><a href="#"><img src="img/7.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/8.jpg" alt=""></a></li>
 			<li><a href="#"><img src="img/1.jpg" alt=""></a></li>
 		</ul>
 		<div id="picNum">
 			<a href="#" class="active"></a>
+			<a href="#"></a>
 			<a href="#"></a>
 			<a href="#"></a>
 			<a href="#"></a>
