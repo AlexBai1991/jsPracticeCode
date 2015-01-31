@@ -11,6 +11,14 @@
 		top: 50px;
 		left: 0;
 	}
+	#div2{
+		width: 1px;
+		height: 600px;
+		background-color: #DDD;
+		position: absolute;
+		left: 300px;
+		top: 0;
+	}
 	</style>
 	<script>
 		window.onload = function(){
@@ -32,12 +40,30 @@
 				}
 
 			}, 30);	
-			cons(timer);	
+		}
+
+		function startMove(iTarget){
+			var div1 = document.getElementById('div1');
+
+			clearInterval(timer);
+			timer = setInterval(function (){
+				var speed = (iTarget - div1.offsetLeft)/7;
+
+				speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+				if(div1.offsetLeft == iTarget){
+					clearInterval(timer);
+				}
+				div1.style.left = div1.offsetLeft + speed + "px";
+				// console.log("speed"+speed);
+				// console.log(div1.offsetLeft);
+			}, 30);
+
 		}
 	</script>
 </head>
 <body>
-	<input type="button" value="开始运动" onclick="startMove()"/>
+	<input type="button" value="开始运动" onclick="startMove(300)"/>
 	<div id="div1"></div>
+	<div id="div2"></div>
 </body>
 </html>
