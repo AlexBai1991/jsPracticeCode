@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>navCard</title>
+	<style type="text/css">
+		ul,li{list-style: none; margin: 0; padding: 0;}
+		a{text-decoration: none; color: gray;}
+		#navCard { width: 400px; border: 1px solid #DDD; margin: 0 auto; padding: 10px;}
+		.nav {border: 1px solid red; width: 200px;}
+		.navItem {background: #CCC; border-bottom: 1px solid #DDD;}
+		.navItem a{display: block; height: 40px; line-height: 40px; padding-left: 20px;}
+		.navInnerItem {display: block; background-color: #FFF;}
+		.navInnerItem li {padding-left: 20px;}
+
+		.navInnerItem li:hover{background-color:#DDD;}
+ 	</style>
+	<script type="text/javascript" src="script/jquery-1.11.2.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		//alert("Hello jQuery");
+
+	});
+	</script>
+
+</head>
+<body>
+<div id="navCard">
+	<ul class="nav">
+		<li class="navItem">
+			<a href="#">衬衫</a>
+			<ul class="navInnerItem">
+				<li><a href="#">短袖衬衫</a></li>
+				<li><a href="#">长袖衬衫</a></li>
+				<li><a href="#">短袖T恤</a></li>
+				<li><a href="#">长袖T恤</a></li>
+			</ul>
+		</li>
+		<li class="navItem">
+			<a href="#">卫衣</a>
+			<ul class="navInnerItem">
+				<li><a href="#">开襟卫衣</a></li>
+				<li><a href="#">套头卫衣</a></li>
+				<li><a href="#">运动卫衣</a></li>
+				<li><a href="#">童装卫衣</a></li>
+			</ul>
+		</li>
+		<li class="navItem">
+			<a href="#">裤子</a>
+			<ul class="navInnerItem">
+				<li><a href="#">短裤</a></li>
+				<li><a href="#">休闲裤</a></li>
+				<li><a href="#">牛仔裤</a></li>
+				<li><a href="#">免烫卡其裤</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+</body>
+</html>
