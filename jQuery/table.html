@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表格</title>
+	<style type="text/css">
+	*{margin: 0; padding: 0;}
+	.tbContent{width: 600px; background: #EEE; border: 1px solid #DDD; margin: 50px auto; padding: 50px;text-align: center;}
+	.tb{margin: 20px auto; width: 400px; border-collapse: collapse;}
+	.tb tr{height: 30px; line-height: 30px;}
+	.tb thead th{border-bottom: 1px solid black;}
+	.even{background: #FFF38F;}
+	.odd{background: #FFFFEE;}
+	.focusHover{background: silver;}
+	.selected{background: gray; color: #FFF;}
+	</style>
+	<script type="text/javascript" src="script/jquery-1.11.2.js"></script>
+	<script type="text/javascript">
+	$(function (){
+		//表格隔行变色
+		$(".tb tbody>tr:odd").addClass("odd");
+		$(".tb tbody>tr:even").addClass("even");
+		//初始化表格时，默认选中的radio按钮所在的行高亮选中状态
+		$(".tb :radio:checked").parent().parent().addClass("selected");
+		//点击到的行高亮，并且radio设为checked状态
+		$(".tb tbody>tr").click(function (){
+			$(this).addClass("selected")
+			.siblings().removeClass("selected")
+			.end()
+			.find(":radio").prop("checked", true);
+		}).hover(function (){	//设置hover到的行高亮显示
+			$(this).toggleClass("focusHover");
+		});
+	});
+	</script>
+</head>
+<body>
+<div class="tbContent">
+	<h2>表格统计</h2>
+	<table class="tb">
+		<thead>
+			<tr>
+				<th></th><th>序号</th><th>姓名</th><th>性别</th><th>家乡</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="radio" name="choice" /></td><td>1</td><td>白进国</td><td>男</td><td>山东</td>
+			</tr>
+			<tr>
+				<td><input type="radio" name="choice" checked="checked" /></td><td>2</td><td>汪道涵</td><td>男</td><td>河北</td>
+			</tr>
+			<tr>
+				<td><input type="radio" name="choice" /></td><td>3</td><td>沈翔宇</td><td>男</td><td>北京</td>
+			</tr>
+			<tr>
+				<td><input type="radio" name="choice" /></td><td>4</td><td>刘红馨</td><td>女</td><td>浙江</td>
+			</tr>
+			<tr>
+				<td><input type="radio" name="choice" /></td><td>5</td><td>安义伦</td><td>男</td><td>江苏</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>七巧板</title>
+</head>
+<body>
+	<canvas id="canvas" style="display:block; border:1px solid #DDD; margin:50px auto;">
+		您的浏览器暂不支持canvas绘图!
+	</canvas>
+	<script>
+	//定义七巧板的绘制信息数组
+	var tangram = [
+		{p: [{x:100,y:100},{x:700,y:100},{x:400,y:400}], color: "#00FF00"},
+		{p: [{x:100,y:100},{x:400,y:400},{x:100,y:700}], color: "#0000FF"},
+		{p: [{x:700,y:100},{x:700,y:400},{x:550,y:550},{x:550,y:250}], color: "#FF0000"},
+		{p: [{x:400,y:400},{x:550,y:250},{x:550,y:550}], color: "#FFFF00"},
+		{p: [{x:400,y:400},{x:550,y:550},{x:400,y:700},{x:250,y:550}], color: "#FA0AEA"},
+		{p: [{x:700,y:400},{x:700,y:700},{x:400,y:700}], color: "#EEDD00"},
+		{p: [{x:100,y:700},{x:400,y:700},{x:250,y:550}], color: "#DE0000"}
+	];
+	/**
+	* 定义绘图函数
+	* piece: 包含绘制图块的point，color属性
+	* cxt: 2D绘图上下文
+	**/
+	function draw(piece, cxt){
+		var points = piece.p;
+		var color = piece.color;
+		cxt.beginPath();
+		cxt.moveTo(points[0].x, points[0].y);
+		for(var i=1; i<points.length; i++){
+			cxt.lineTo(points[i].x, points[i].y);
+		}
+		cxt.closePath();
+		//填充
+		cxt.fillStyle = color;
+		cxt.fill();
+		//描边
+		cxt.lineWidth = 3;
+		cxt.strokeStyle = "black";
+		cxt.stroke();
+	}
+	window.onload = function (){
+		var canvas = document.getElementById("canvas");
+		//设置canvas画布宽高
+		canvas.width = 800;
+		canvas.height = 800;
+
+		if(canvas.getContext){
+			var context = canvas.getContext("2d");
+
+			//遍历循环初始化数组
+			for(var i=0; i<tangram.length; i++){
+				//调用draw函数，实际绘制图块
+				draw(tangram[i], context);
+			}
+		}
+	};
+	</script>
+</body>
+</html>

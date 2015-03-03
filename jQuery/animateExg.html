@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>animate example</title>
+	<style type="text/css">
+	* { margin: 0; padding: 0; }
+	li{list-style: none;}
+	a{text-decoration: none;}
+	.v_show{width:800px; border: 1px solid #CCC; margin: 20px auto;}
+	.v_caption{background: #DDD; overflow: auto; height: 30px; line-height: 30px;}
+	.show_title{float: left; margin-left: 20px;}
+	.highlight_tip{float: left; margin-left: 50px;}
+	.highlight_tip span{background-color: #FFF; padding: 2px; margin-right: 5px; color: blue;}
+	.highlight_tip span.current{background-color: blue; color: #FFF;}
+	.change_btn{float: left; margin-left: 20px;}
+	.change_btn span {background-color: #FEE; margin-right: 5px; border: 1px solid #DDD;}
+
+	.v_content{height: 180px; overflow: hidden; position: relative;}
+	.v_contentLis {width: 1000px; height: 180px; position: absolute; top: 0; left: 0;}
+	.v_contentLis li{float: left; padding: 15px 10px; height: 150px;}
+	.v_contentLis li img{width: 180px;height: 120px;}
+	.v_contentLis li h5{height: 20px; line-height: 20px; color: blue;}
+	</style>
+	<script type="text/javascript" src="script/jquery-1.11.2.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function (){
+		var i = 4;		//每页视频条目数
+		var pageNow = 1;	//默认当前视频列表页
+
+		var $prev = $(".change_btn span:eq(0)");
+		var $next = $(".change_btn span:eq(1)");
+
+		var $v_show = $next.parents(".v_show");
+		var $highlight_tip = $(".highlight_tip span");
+		var $v_content = $v_show.children(".v_content");
+
+		var $v_contentLis = $v_content.children(".v_contentLis");
+		var $contentLis = $v_contentLis.children("li");
+		var widthVal = $contentLis.length * ($contentLis.width() + 20);
+		//设置v_contentLis默认的宽度
+		$v_contentLis.css("width", widthVal + "px");
+		//视频列表页数目
+		var pageCount = Math.ceil($contentLis.length / i);
+		var $aLink = $(".highlight_tip a");
+
+		//为导航按钮添加点击事件
+		$aLink.hover(function (){
+			pageNow = $(this).text();
+			$v_contentLis.animate({"left": -($v_content.width() * (pageNow - 1)) + "px"}, "normal");
+			$(this).children().addClass("current")
+			.parent().siblings().children().removeClass("current");
+		});
+		
+		//为$next、$prev添加点击事件
+		$next.click(function (){
+			//判断是否处在动画状态，是则停止点击事件，否则执行点击事件
+			if(!$v_contentLis.is(":animated")){
+				if(pageNow == pageCount){
+					$v_contentLis.animate({"left": "0px"}, "normal");
+					pageNow = 1;
+				}else{
+					$v_contentLis.animate({"left": "-="+$v_content.width()}, "normal");
+					pageNow++;
+				}
+			}
+			$highlight_tip.eq((pageNow - 1)).addClass("current")
+			.parent().siblings().children().removeClass("current");
+		});
+		$prev.click(function (){
+			if(!$v_contentLis.is(":animated")){
+				if(pageNow == 1){
+					$v_contentLis.animate({"left": "-="+$v_content.width() * (pageCount - 1)}, "normal");
+					pageNow = pageCount;
+				}else{
+					$v_contentLis.animate({"left": "+="+$v_content.width()}, "normal");
+					pageNow--;
+				}
+			}
+
+			$highlight_tip.eq((pageNow - 1)).addClass("current")
+			.parent().siblings().children().removeClass("current");
+		});					
+	});
+	</script>
+</head>
+<body>	
+	<div class="v_show">
+		<div class="v_caption">
+			<h3 class="show_title">卡通动漫</h3>
+			<div class="highlight_tip">
+				<a href="#"><span class="current">1</span></a><a href="#"><span>2</span></a><a href="#"><span>3</span></a><a href="#"><span>4</span></a>
+			</div>
+			<div class="change_btn">
+				<span><a href="#">前一个</a></span><span><a href="#">后一个</a></span>
+			</div>
+		</div>
+		<div class="v_content">
+			<ul class="v_contentLis">
+				<li>
+					<a href="##"><img src="image/1.jpg" alt="1"></a>
+					<a href="##"><h5>海贼王</h5></a><span>播放:<em>18320</em></span>
+				</li>
+				<li>
+					<a href="##"><img src="image/2.jpg" alt="1"></a>
+					<a href="##"><h5>海贼王</h5></a><span>播放:<em>18320</em></span>
+				</li>
+				<li>
+					<a href="##"><img src="image/1.jpg" alt="1"></a>
+					<a href="##"><h5>海贼王</h5></a><span>播放:<em>18320</em></span>
+				</li>
+				<li>
+					<a href="##"><img src="image/2.jpg" alt="1"></a>
+					<a href="##"><h5>海贼王</h5></a><span>播放:<em>18320</em></span>
+				</li>
+				<li>
+					<a href="##"><img src="image/1.jpg" alt="1"></a>
+					<a href="##"><h5>海贼王</h5></a><span>播放:<em>18320</em></span>
+				</li>
+				<li>
+					<a href="##"><img src="image/2.jpg" alt="1"></a>
+					<a href="##"><h5>海贼王</h5></a><span>播放:<em>18320</em></span>
+				</li>
+				<li>
+					<a href="##"><img src="image/1.jpg" alt="1"></a>
+					<a href="##"><h5>海贼王</h5></a><span>播放:<em>18320</em></span>
+				</li>
+				<li>
+					<a href="##"><img src="image/2.jpg" alt="1"></a>
+					<a href="##"><h5>海贼王</h5></a><span>播放:<em>18320</em></span>
+				</li>
+				<li>
+					<a href="##"><img src="image/1.jpg" alt="1"></a>
+					<a href="##"><h5>海贼王</h5></a><span>播放:<em>18320</em></span>
+				</li>
+				<li>
+					<a href="##"><img src="image/2.jpg" alt="1"></a>
+					<a href="##"><h5>海贼王</h5></a><span>播放:<em>18320</em></span>
+				</li>
+				<li>
+					<a href="##"><img src="image/1.jpg" alt="1"></a>
+					<a href="##"><h5>海贼王</h5></a><span>播放:<em>18320</em></span>
+				</li>
+				<li>
+					<a href="##"><img src="image/2.jpg" alt="1"></a>
+					<a href="##"><h5>海贼王</h5></a><span>播放:<em>18320</em></span>
+				</li>
+				<li>
+					<a href="##"><img src="image/1.jpg" alt="1"></a>
+					<a href="##"><h5>海贼王</h5></a><span>播放:<em>18320</em></span>
+				</li>
+				<li>
+					<a href="##"><img src="image/2.jpg" alt="1"></a>
+					<a href="##"><h5>海贼王</h5></a><span>播放:<em>18320</em></span>
+				</li>
+				<li>
+					<a href="##"><img src="image/1.jpg" alt="1"></a>
+					<a href="##"><h5>海贼王</h5></a><span>播放:<em>18320</em></span>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

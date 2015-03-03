@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单验证</title>
+	<style type="text/css">
+	div, input{ margin: 0; padding: 0;}
+	.item {width: 500px; height: 30px; line-height: 30px; }
+	.item label{ width: 100px; text-align: right; display: inline-block;}
+	.item .errInput {border: 1px solid red; background: #FFE0E9;}
+	.item .formTips{font-size: 10px; padding: 2px;}
+	.item .errMsg{color: red; padding-left: 22px; background: #FFE0E9 url(image/reg3.gif) no-repeat 0 center;}
+	.item .okMsg{color: green; padding-left: 26px; background: #E9FBEB url(image/reg4.gif) no-repeat 0 center;}
+	.reqPic{color: red;}
+	</style>
+	<script src="script/jquery-1.11.2.js"></script>
+	<script>
+	$(document).ready(function (){
+		//为每个必填表单项之后添加星号标示
+		$(".item :input.required").each(function (){		
+			var $required = $("<strong class='reqPic'>﹡</strong>");
+			$required.appendTo($(this).parent());	
+		});
+		//表单验证
+		$(".item :input").blur(function (){
+			var $parent = $(this).parent();
+			$parent.find(".formTips").remove();	//删除以前的提醒元素
+			//用户名验证
+			if($(this).is("#username")){				
+				if(this.value == "" || this.value.length < 6){
+					var errMsg = "请输入至少6为的用户名!";
+					$parent.append($("<span class='formTips errMsg'>"+errMsg+"</span>"));
+					$(this).addClass("errInput");
+				}else{
+					var okMsg = "输入正确!";
+					$("<span class='formTips okMsg'>"+okMsg+"</span>").appendTo($parent);
+					if($(this).hasClass("errInput")){
+						$(this).removeClass("errInput");
+					}
+				}
+			}
+			//邮箱验证
+			if ($(this).is("#mailbox")){
+				if(this.value == "" || (this.value != "" && !/.+@.+\.[a-zA-Z]{2,4}$/.test(this.value))){
+					var errMsg = "请输入合法的邮箱地址!";
+					$("<span class='formTips errMsg'>"+errMsg+"</span>").appendTo($parent);
+					$(this).addClass("errInput");
+				}else{
+					var okMsg = "输入正确!";
+					$parent.append($("<span class='formTips okMsg'>"+okMsg+"</span>"));
+					if($(this).hasClass("errInput")){
+						$(this).removeClass("errInput");
+					}
+				}
+			}
+		}).keyup(function (){
+			$(this).triggerHandler("blur");
+		}).focus(function (){
+			$(this).triggerHandler("blur");
+		});
+		//提交表单验证
+		$(".item #send").bind("click", function (){
+			$(".item :input.required").trigger("blur");
+			var requiredErrSpan = $(".item .errMsg").length;
+			if(requiredErrSpan){
+				return false;
+			}
+			alert("恭喜您，已成功注册!");
+		});
+		//重置表单项
+		$(".item #res").click(function (){
+			$(".item .formTips").remove();
+			var $requiredInput = $(".item .required");
+			if($requiredInput.hasClass("errInput")){
+				$requiredInput.removeClass("errInput");
+			}
+		});
+	});
+	</script>
+</head>
+<body>
+<form action="" method="post">
+	<h1>新用户注册</h1>	
+	<div class="item">
+		<label for="username">用户名：</label><input type="text" id="username" name="username" class="required" />
+	</div>
+	<div class="item">
+		<label for="mailbox">邮箱：</label><input type="text" id="mailbox" name="mailbox" class="required" />
+	</div>
+	<div class="item">		
+		<label for="personinfo">个人资料：</label><input type="text" id="personinfo" name="personinfo" />
+	</div>
+	<div class="item">
+		<input type="submit" value="注册" id="send" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="重置" id="res" />
+	</div>
+</form>
+	
+</body>
+</html>

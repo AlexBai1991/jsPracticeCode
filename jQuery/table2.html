@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表格复选框</title>
+	<style type="text/css">
+	div tr{margin: 0; padding: 0; font:normal 12px/17px Arial;}
+	.search{text-align: left; width: 400px; height: 30px; line-height: 30px; margin: 10px auto;}
+	.search #searchTable{width: 200px; height: 20px;padding: 1px 4px; border: 1px solid #DDD;}
+	.tbContent{width: 600px; background: #EEE; border: 1px solid #DDD; margin: 50px auto; padding: 50px;text-align: center;}
+	.tb{margin: 0 auto; width: 400px; border-collapse: collapse;}
+	.tb tr{height: 30px; line-height: 30px;}
+	.tb thead th{border-bottom: 1px solid black;}
+	.even{background: #FFF38F;}
+	.odd{background: #FFFFEE;}
+	.focusHover{background: silver;}
+	.selected{background: gray; color: #FFF;}
+	</style>
+	<script type="text/javascript" src="script/jquery-1.11.2.js"></script>
+	<script type="text/javascript">
+	$(function (){
+		//表格隔行变色
+		$(".tb tbody>tr:odd").addClass("odd");
+		$(".tb tbody>tr:even").addClass("even");
+		//初始化表格时，默认选中的checkbox按钮所在的行高亮选中状态
+		$(".tb :checkbox:checked").parent().parent().addClass("selected");
+		$(".tb tbody>tr.selected").children().children().prop("checked", true);
+		//点击到的行高亮，并且radio设为checked状态
+		$(".tb tbody>tr").click(function (){
+			var hasSelected = $(this).hasClass("selected");
+			$(this).toggleClass("selected").find(":checkbox").prop("checked", !hasSelected);
+			//循环遍历tr元素
+			var flag = true;
+			$(".tb tbody>tr").each(function (){
+				if(!$(this).find(":checkbox").prop("checked")){
+					flag = false;
+					return false;
+				}
+			});
+			$("#selectAllCheckbox").prop("checked", flag);
+		}).hover(function (){	//设置hover到的行高亮显示
+			$(this).toggleClass("focusHover");
+		});
+		//点击全选(不选)按钮，选中相应的行
+		$("#selectAllCheckbox").click(function (){
+			var selectAllCheckbox = $(this).prop("checked");
+			$(".tb tbody>tr")[selectAllCheckbox ? "addClass" : "removeClass"]("selected").find(":checkbox").prop("checked", selectAllCheckbox);
+		});
+		//筛选人员
+		$("#searchTable").keyup(function (){
+			$(".tb tbody>tr").hide()
+			.filter(":contains('"+($(this).val())+"')").show();
+		});
+	});
+	</script>
+</head>
+<body>
+<div class="tbContent">
+	<h2>表格统计</h2>
+	<div class="search">
+		筛选：<input type="text" id="searchTable" />
+	</div>
+	<table class="tb">
+		<thead>
+			<tr>
+				<th><input type="checkbox" id="selectAllCheckbox"></th><th>序号</th><th>姓名</th><th>性别</th><th>家乡</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="checkbox" name="choice" /></td><td>1</td><td>白进国</td><td>男</td><td>山东</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="choice" /></td><td>2</td><td>汪道涵</td><td>男</td><td>河北</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="choice" /></td><td>3</td><td>沈翔宇</td><td>男</td><td>北京</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="choice" /></td><td>4</td><td>刘红馨</td><td>女</td><td>浙江</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="choice" /></td><td>5</td><td>安义伦</td><td>男</td><td>江苏</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="choice" /></td><td>6</td><td>白东项</td><td>男</td><td>湖南</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="choice" /></td><td>7</td><td>刘苏燕</td><td>女</td><td>湖北</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" name="choice" /></td><td>8</td><td>马伦浩</td><td>男</td><td>广东</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>

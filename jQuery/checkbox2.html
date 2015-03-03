@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>checkbox2</title>
+	<script type="text/javascript" src="script/jquery-1.11.2.js"></script>
+	<script type="text/javascript">
+	/*
+	//jquery方式
+	$(function (){
+		//全选、全不选
+		$("#selectyesno").click(function (){
+			$("[name=items]:checkbox").prop("checked", $(this).prop("checked"));
+		});
+		//当选项中至少有一个没有选中时，则改变“全选/全不选”按钮的状态
+		
+		$("[name=items]:checkbox").click(function (){
+			var flag = true;
+			$("[name=items]:checkbox").each(function (){
+				//debugger;
+				if($(this).prop("checked") == false){
+					flag = false;
+					return false;	//发现有没选中的，即刻跳出循环遍历
+				}
+			});
+			$("#selectyesno").prop("checked", flag);
+		});
+	});*/
+	//原生javascript方式	
+	window.onload = function (){
+		var selectBtn = document.getElementById("selectyesno");
+		var option = document.getElementById("option");
+		var cheOptions = option.getElementsByTagName("input");
+		var sendBtn = document.getElementById("send");
+		selectBtn.onclick = function (){
+			for(var i=0; i<cheOptions.length; i++){
+				cheOptions[i].checked = this.checked;
+			}
+		};
+		for(var i=0; i<cheOptions.length; i++){
+			cheOptions[i].onclick = function (){
+				//alert(this.checked);
+				var flag = true;
+				for(var j=0; j<cheOptions.length; j++){
+					//debugger;
+					if(cheOptions[j].checked == false){
+						flag = false;
+						break;
+					}
+				}
+				selectBtn.checked = flag;
+			};
+		}
+		sendBtn.onclick = function (){
+			var str = "";
+			for(var i=0; i<cheOptions.length; i++){
+				if(cheOptions[i].checked == true){
+					str += "\r\n"+cheOptions[i].value;
+				}
+			}
+			alert("你喜欢的运动是："+str);
+		};
+	};
+
+	</script>
+</head>
+<body>
+	<form action="" method="POST">
+		<span>你爱好的运动是？</span>
+		<input type="checkbox" id="selectyesno" />全选/全不选
+		<br/>
+		<div id="option">
+			<input type="checkbox" name="items" value="football" />足球
+			<input type="checkbox" name="items" value="basketball" />篮球
+			<input type="checkbox" name="items" value="badminton" />羽毛球
+			<input type="checkbox" name="items" value="pingpang" />乒乓球
+		</div>
+		<br/>
+		<input type="button" value="确认提交" id="send" />
+	</form>
+</body>
+</html>

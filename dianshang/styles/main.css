@@ -1,0 +1,66 @@
+/*主要样式main.css*/
+/*header*/
+.header{background: #ededed;}
+.comWidth{width: 1000px; margin: 0 auto;}
+.headerTit{height: 65px;}
+.logo{margin-left: 10px; float: left;}
+.search{line-height: 65px; margin-left: 40px; float: left;}
+.search #searchInput{width: 200px; height: 17px; border: 1px solid #BABEBF; padding: 3px 6px; }
+.search #searchInput.focus{border: 1px solid #00A5FF;}
+.sheme{float: right; margin: 20px 20px 0 0;}
+.sheme li{float: left; margin-left: 5px; width: 15px; height: 15px; overflow: hidden; text-indent: -9999px; background-image: url(../images/theme.gif); cursor: pointer; }
+#sheme_01{background-position: 0px 0px;}
+#sheme_02{background-position: 15px 0px;}
+#sheme_03{background-position: 35px 0px;}
+#sheme_04{background-position: 55px 0px;}
+#sheme_05{background-position: 75px 0px;}
+#sheme_06{background-position: 95px 0px;}
+#sheme_01.selected{background-position: 0px -15px;}
+#sheme_02.selected{background-position: 15px -15px;}
+#sheme_03.selected{background-position: 35px -15px;}
+#sheme_04.selected{background-position: 55px -15px;}
+#sheme_05.selected{background-position: 75px -15px;}
+#sheme_06.selected{background-position: 95px -15px;}
+.headerNav{height: 37px; line-height: 37px;}
+.nav{margin-left: 10px;}
+.nav li{float: left; position: relative; z-index: 100;}
+.nav .navItem{color: #FFF; display: inline-block; padding: 0 20px; font-size: 14px;}
+.innerNav{width: 492px; position: absolute; top: 37px; left: 0; display: none; background: #FFF;}
+.innerSubNav{border: 1px solid #DDD; width: 450px; padding: 10px 20px;}
+.innerSubNav dl{border-top: 1px dashed #DDD; padding: 5px 0; overflow: hidden;}
+.innerSubNav .fore{padding-top: 0; border-top-style: none;}
+.innerSubNav dt{float: left; width: 50px; line-height: 24px; text-align: center; font-weight: bold; }
+.innerSubNav dd{float: left; width: 400px;}
+.innerSubNav em{padding: 0 8px; margin: 5px 0; height: 14px; line-height: 14px; border-right: 1px solid #DDD; float: left;}
+/*content*/
+.marTop{margin-top: 10px;}
+.leftCon{width: 187px; float: left; margin-right: 10px;}
+.leftCon h2{height: 30px; line-height: 30px; font-size: 13px; color: #FFF; text-indent: 10px;}
+.brand{border: 1px solid #DDD; border-top: none; padding: 0 10px 10px 10px;}
+.brandItem h3{border-bottom: 1px dashed #DDD; height: 29px; line-height: 29px; font-size: 12px;}
+.brandCon{margin-left: 3px;}
+.brandCon li{float: left; width: 81px; height: 25px; line-height: 25px;}
+.rightCon{float: left; width: 803px;}
+.banner{width: 550px; height: 321px; position: relative; overflow: hidden; float: left;}
+.bannerCon li{height: 321px; display: none; position: absolute; left: 0; top: 0;}
+.bannerNav{position: absolute; left: 0; bottom: 0;}
+.bannerNav div{width: 109px; height: 40px; cursor: pointer; margin-right: 1px; float: left; padding: 5px 0; background: #444444; opacity: 0.7; filter:alpha(opacity:70);}
+.bannerNav div.bannerSelected{background: url(../images/adindex.gif) no-repeat center 47px #37A7D7; opacity: 1; filter:alpha(opacity:100);}
+.bannerNav div em{color: #FFF; display: block; height: 20px; line-height: 20px; text-align: center;}
+.news{float: left; width: 230px; margin-left: 23px;}
+.newsCon{margin-top: 5px; border: 1px solid #DDD;}
+.newsCon h2{height: 23px; line-height: 23px; font-size: 12px; text-indent: 10px; border-bottom: 1px solid #DDD;}
+.newsCon ul{padding: 5px 10px;}
+.newsCon li{height: 20px; line-height: 20px;}
+#tooltip{background: #f7f5d1; border: 1px solid #333; color: #333; position: absolute; padding: 1px; display: none;}
+.brandSale{margin-top :10px;}
+.brandSaleTit{border-bottom: 1px solid #DDD; height: 24px; line-height: 24px;}
+.brandSaleTit h2{float: left; font-size: 12px;}
+.brandSaleNav{float: right;}
+.brandSaleNav a.bsnSelected{background: #FA5889; color: #FFF;}
+.brandSaleNav li{float: left;}
+.brandSaleNav a{margin-right: 10px; margin-bottom: 0; display: inline-block; height: 24px; line-height: 24px; padding: 0px 6px; background: #CCC;}
+.brandSaleItem{position: relative; width: 772px; height: 200px; overflow: hidden; margin: 10px auto;}
+.brandSaleCon{position: absolute; left: 0; top: 0; width: 3088px;}
+.brandSaleCon li{float: left; padding: 5px;}
+.brandSaleCon span{display: block; height: 22px; line-height: 22px; background: #CCC; text-align: center; cursor: pointer;}

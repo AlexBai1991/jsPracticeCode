@@ -9,8 +9,9 @@
 		#navCard { width: 400px; border: 1px solid #DDD; margin: 0 auto; padding: 10px;}
 		.nav {border: 1px solid red; width: 200px;}
 		.navItem {background: #CCC; border-bottom: 1px solid #DDD;}
+		.navItemActColor {background-color: blue; color: #FFF;}
 		.navItem a{display: block; height: 40px; line-height: 40px; padding-left: 20px;}
-		.navInnerItem {display: block; background-color: #FFF;}
+		.navInnerItem {display: none; background-color: #FFF;}
 		.navInnerItem li {padding-left: 20px;}
 
 		.navInnerItem li:hover{background-color:#DDD;}
@@ -19,6 +20,13 @@
 	<script type="text/javascript">
 	$(document).ready(function(){
 		//alert("Hello jQuery");
+		$(".navItem > a").click(function (){
+			$(this).addClass("navItemActColor")
+			.next().show()
+			.parent().siblings().children("a").removeClass("navItemActColor")
+			.next().hide();
+			return false;
+		});
 
 	});
 	</script>

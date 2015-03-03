@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>checkbox</title>
+	<script src="script/jquery-1.11.2.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	/*第一种初始化方式
+	$(document).ready(function (){
+		//code here
+	});*/
+	//第二种初始化方式
+	$(function (){
+		//全选
+		$("#selectAll").click(function (){
+			//操作checkbox的"checked"属性
+			$("[name=items]:checkbox").prop('checked', true);
+		});
+		//全不选
+		$("#selectNone").click(function (){
+			$("[name=items]:checkbox").prop('checked', false);
+		});
+		//反选
+		$('#selectOpsite').click(function (){
+			//循环遍历checkbox集合
+			$("[name=items]:checkbox").each(function (){
+				//this.checked = !this.checked;	//原生javascript写法
+				$(this).prop("checked", !$(this).prop("checked"));
+			});
+		});
+		$("#send").click(function (){
+			var str = "";
+			$("[name=items]:checkbox:checked").each(function (){
+				str += "\r\n"+$(this).val();
+			});
+			alert("你爱好的运动是："+str);
+		});
+	});
+	</script>
+</head>
+<body>
+	<form action="" method="POST">  
+		<h2>你爱好的运动是？</h2>
+		<input type="checkbox" name="items" value="football" />足球
+		<input type="checkbox" name="items" value="basketball" />篮球
+		<input type="checkbox" name="items" value="badminton" />羽毛球
+		<input type="checkbox" name="items" value="pingpang" />乒乓球
+		<br/>
+		<input type="button" value="全选" id="selectAll" /><input type="button" value="全不选" id="selectNone" /><input type="button" value="反选" id="selectOpsite" /><input type="submit" value="确定提交" id="send" />
+	</form>
+</body>
+</html>

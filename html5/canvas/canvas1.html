@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>彩色球绘制</title>
+</head>
+<body>
+	<canvas id="canvas" style="border: 1px solid #DDD; margin: 20px auto; display: block;">您浏览器暂不支持canvas绘图</canvas>
+	<script>
+	var colors = ["red", "green", "blue", "black", "#DDD", "yellow", "pink", "#FA5889", "#37A7D7", "#37C7D4"];
+	var WINDOW_WIDTH = 1200;
+	var WINDOW_HEIGHT = 600;
+	var MARGIN_TOP = 15;
+	var MARGIN_LEFT = 15;
+	var RADIUS = 18;
+	var digit = [
+		//0
+		[
+			[0, 1, 1, 1, 1, 1, 0],
+			[1, 0, 0, 0, 0, 0, 1],
+			[1, 0, 0, 0, 0, 0, 1],
+			[1, 0, 0, 0, 0, 0, 1],
+			[1, 0, 0, 0, 0, 0, 1],
+			[1, 0, 0, 0, 0, 0, 1],
+			[1, 0, 0, 0, 0, 0, 1],
+			[1, 0, 0, 0, 0, 0, 1],
+			[1, 0, 0, 0, 0, 0, 1],
+			[0, 1, 1, 1, 1, 1, 0]	
+		]
+	];
+	window.onload = function (){
+		var canvas = document.getElementById("canvas");
+		canvas.width = WINDOW_WIDTH;
+		canvas.height = WINDOW_HEIGHT;
+
+		if(canvas.getContext){
+			var context = canvas.getContext("2d");
+			//要进行绘制的数字
+			var number = 0;
+
+			for(var i=0; i<digit[number].length; i++){
+				for(var j=0; j<digit[number][i].length; j++){
+					if(digit[number][i][j] == 1){
+						context.beginPath();
+						var x = MARGIN_LEFT + (RADIUS+1) + j*2*(RADIUS+1);
+						var y = MARGIN_TOP + (RADIUS+1) + i*2*(RADIUS+1); 
+						context.arc(x, y, RADIUS, 0, 2*Math.PI, false);
+						context.closePath();
+						//随机数生成颜色
+						var colorIndex = Math.floor(Math.random()*10);
+						//arr.push(colorIndex);
+						context.fillStyle = colors[colorIndex];
+						context.fill();
+
+					}
+				}
+			}
+
+			// for(var i=0; i<10; i++){
+			// 	context.beginPath();
+			// 	context.arc(100*i, 100, 40, 0, 2*Math.PI*(i+1)/10, false);
+			// 	context.closePath();
+			// 	//随机产生颜色 0~9
+			// 	var colorIndex = Math.floor(Math.random()*10);
+			// 	arr.push(colorIndex);
+			// 	context.fillStyle = colors[colorIndex];
+			// 	context.fill();
+			// }
+			// console.log(arr);
+			/*
+			context.beginPath();
+			context.arc(100, 100, 40, 0, 1.5*Math.PI, false);
+			context.closePath();
+			
+			context.lineWidth = 15;
+			context.strokeStyle = "blue";
+			context.stroke();
+			context.fillStyle = "#CCC";
+			context.fill();
+
+			context.beginPath();
+			context.arc(200, 100, 40, 0, 2*Math.PI, false);
+			context.closePath();
+			context.fillStyle = "red";
+			context.fill();
+			*/
+		}
+	};
+	</script>
+</body>
+</html>

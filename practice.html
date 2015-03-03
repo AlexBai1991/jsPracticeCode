@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>practice</title>
+	<script>
+	window.onload = function (){
+		log("hello world".spacify());
+		log("hello", "world");
+	};
+	/**
+	*	定义方法spacify，并加在String原型上
+	**/
+	String.prototype.spacify = function (){
+		return this.split("").join("-");
+	}
+	/**
+	*	代替console.log();方法，可以接收多个参数，可以在每个log输出加前缀(app)
+	**/
+	function log(){
+		var args = Array.prototype.slice.call(arguments);
+		args.unshift("(app)");
+		console.log.apply(console, args);
+	}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,20 @@
+@charset "utf-8";
+/*常用初始化样式*/
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{margin: 0;padding: 0;}
+body,button,input,select,textarea{font: 12px/1.5 tahoma,arial;}
+h1,h2,h3,h4,h5,h6{font-size: 100%;}
+ul,ol{list-style: none;}
+a{text-decoration: none; color: #656565;}
+a:hover{text-decoration: underline;}
+fieldset,img{border: 0;}
+table{border-collapse: collapse; border-spacing: 0;}
+/*不常用初始化样式*/
+sup{vertical-align: text-top;}
+sub{vertical-align: text-bottom;}
+legend{color:#000;}
+address,cite,dfn,em,var{font-style: normal;}
+code,kbd,pre,samp{font-family: courier new,courier,monospace;}
+small{font-size:12px;}
+/*清除父级元素浮动状态*/
+.clearfix:after{content: ""; display: block; clear: both;}
+.clearfix{zoom: 1;}
