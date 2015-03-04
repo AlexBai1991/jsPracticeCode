@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>透明遮罩</title>
+	<style>
+
+	#container{
+		width: 1000px;
+		height: 800px;
+		background: #CCC;
+		margin: 0 auto;
+		overflow: hidden;
+	}
+	#target{
+	    width: 200px;
+	    height: 300px;
+	    margin: 40px;
+	    background-color: red;
+	    border: 1px solid blue;
+	}
+	</style>
+	<script>
+
+	window.onload = function(){
+		var target = document.getElementById('target');
+		addMask(target);
+
+		target.addEventListener('click', function () {
+		    alert('click');
+		}, false);	
+
+
+		function getStyle(obj, name){
+			if(obj.currentStyle){
+				return obj.currentStyle[name];
+			}else{
+				return getComputedStyle(obj, null)[name];
+			}
+		}
+		//添加遮罩
+		function addMask(elem, opacity) {
+		    var opacity = opacity || 0.2;
+
+		    var rect = elem.getBoundingClientRect();
+		    //var style = getComputedStyle(elem, null); 
+		    var marginLeft = parseFloat(getStyle(elem,"marginLeft"));
+		    var marginTop = parseFloat(getStyle(elem, "marginTop"));
+		    var marginRight = parseFloat(getStyle(elem,"marginRight"));
+		    var marginBottom = parseFloat(getStyle(elem, "marginBottom"));
+
+
+
+		    var mask = document.createElement('div');
+		    
+		    alert(marginLeft);
+		    alert(elem.offsetLeft);
+		    alert(marginTop);
+		    alert(elem.offsetTop);
+		    mask.style.position = 'absolute';
+		    mask.style.left = (elem.offsetLeft - marginLeft) + 'px';
+		    mask.style.top = (elem.offsetTop - marginTop) + 'px';
+		    mask.style.zIndex = 9999;
+		    
+		    mask.style.opacity = '' + opacity;
+		    mask.style.filter = "alpha(opacity:"+(opacity*100)+")";
+		    
+		    mask.style.backgroundColor = '#000';
+
+		    mask.style.width = (marginLeft + marginRight + rect.width) + 'px';
+		    mask.style.height = (marginTop + marginBottom + rect.height) + 'px';
+
+		    elem.parentNode.appendChild(mask);
+		}
+
+	};
+	</script>
+
+</head>
+<body>
+	<div id="container">
+		<div id="target"></div>
+	</div>
+</body>
+</html>

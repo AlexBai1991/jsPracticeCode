@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>selectMenu</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	ul,li{list-style: none;padding: 0;margin:0;}
+	#diyu, #gongnengyu{float: left;margin-right: 20px; margin-top: 20px;}
+	.common {border: 1px solid #CCC;  width: 100px;}
+	#diyu li{ height:30px; line-height: 30px; text-align: center; border-bottom: 1px solid #CCC;}
+	#diyu #innerDiyu li{border-bottom: 1px solid #CCC;}
+	.icon{background-color: #DDD;}
+	.icon i{font-size: 16px; font-weight: bold;font-style: normal; margin-right: 0;}
+	#gongnengyu li{ height:30px; line-height: 30px; text-align: center; border-bottom: 1px solid #CCC;}
+	#gongnengyu #innergongnengyu li{border-bottom: 1px solid #CCC;}
+	</style>
+	<script type="text/javascript">
+	window.onload = function (){
+		var checkAll = document.getElementById("CheckboxAll");
+		var diyu = document.getElementById("diyu");
+		var diyuLi = diyu.getElementsByTagName("input");
+		var diyuMainLi = diyu.getElementsByTagName("li")[0];
+		var gongnengyu = document.getElementById("gongnengyu");
+		var gongnengyuLi = gongnengyu.getElementsByTagName("input");
+		var gongnengyuMainLi = gongnengyu.getElementsByTagName("li")[0];
+
+		var innerDiyu = document.getElementById("innerDiyu");
+		var innergongnengyu = document.getElementById("innergongnengyu");
+		
+		checkAll.onchange = function (){
+			if(this.checked == true){
+				changeCheckboxStatus(diyuLi, true);
+				changeCheckboxStatus(gongnengyuLi, true);	
+				innerDiyu.style.display = "block";		
+				innergongnengyu.style.display = "block";			
+			}else{				
+				changeCheckboxStatus(diyuLi, false);
+				changeCheckboxStatus(gongnengyuLi, false);	
+			}
+		};
+		for(var i=0; i<diyuLi.length; i++){
+			diyuLi[i].onchange = function (){
+				if(this.checked == false){
+					checkAll.checked = false;
+				}
+			};
+		}
+		for(var i=0; i<gongnengyuLi.length; i++){
+			gongnengyuLi[i].onchange = function (){
+				if(this.checked == false){
+					checkAll.checked = false;
+				}
+			};
+		}
+		function changeCheckboxStatus(objs, status){			
+			for(var i=0; i<objs.length; i++){
+				objs[i].checked = status;
+			}		
+		}
+
+		diyuMainLi.onclick = function (){
+			if(innerDiyu.style.display == "block"){
+				innerDiyu.style.display = "none";
+			}else{				
+				innerDiyu.style.display = "block";
+			}
+		};
+		gongnengyuMainLi.onclick = function (){
+			if(innergongnengyu.style.display == "block"){
+				innergongnengyu.style.display = "none";
+			}else{				
+				innergongnengyu.style.display = "block";
+			}
+		};
+	};
+	</script>
+</head>
+<body>
+<label for="CheckboxAll" >全部显示</label><input id="CheckboxAll" name="checkall" type="checkbox" /><br>
+<ul id="diyu" class="common">
+	<li class="icon">地域<i>∨</i></li>
+	<ul id="innerDiyu" style="display: none;">
+		<li><label for="beiyou" >北邮域</label><input id="beiyou" name="beiyou" type="checkbox" /></li>
+		<li><label for="beijiao" >北交域</label><input id="beijiao" name="beiyou" type="checkbox" /></li>
+		<li><label for="qinghua" >清华域</label><input id="qinghua" name="beiyou" type="checkbox" /></li>
+	</ul>
+</ul>
+<ul id="gongnengyu" class="common">
+	<li class="icon">功能域<i>∨</i></li>
+	<ul id="innergongnengyu" style="display: none;">
+		<li><label for="jiaohuan" >交换域</label><input id="jiaohuan" name="beiyou" type="checkbox" /></li>
+		<li><label for="luyou" >路由域</label><input id="luyou" name="beiyou" type="checkbox" /></li>
+		<li><label for="ceshi" >测试域</label><input id="ceshi" name="beiyou" type="checkbox" /></li>
+	</ul>
+</ul>
+</body>
+</html>

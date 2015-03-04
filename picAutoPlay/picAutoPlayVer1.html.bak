@@ -8,8 +8,6 @@
 		margin: 0;
 		padding: 0;
 	}
-
-
 	body{
 		background-color: #999;
 	}
@@ -101,7 +99,6 @@
 	</style>
 	<script src="move.js"></script>
 	<script type="text/javascript">
-	//修改版本
 	window.onload = function (){
 		var picture = document.getElementById("picture");
 		var picCon = document.getElementById('picCon');

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>moveAction -- 面向过程</title>
+	<meta charset="utf-8">
+
+	<style type="text/css">
+	*{margin: 0; padding: 0;}
+	#div1{width: 200px; height: 200px; background: #DDD; position: absolute; left: 600px; top: 30px;}
+	#div2{width: 100px; height: 100px; background: red; margin-top: 50px; opacity: 0.3; filter: alpha(opacity:30);}
+	#div3{width: 100px; height: 100px; background: red; margin-top: 50px; opacity: 0.3; filter: alpha(opacity:30);}
+	#div4{width: 100px; height: 100px; background: red; margin-top: 50px; opacity: 0.3; filter: alpha(opacity:30);}
+	#line{position: absolute; left: 300px; top: 0; height: 300px;width: 1px; background: #DDD;}
+	</style>
+	<script>
+	window.onload = function (){
+		var timer = null; 
+		var opacity = 30;
+
+		var oBtn = document.getElementById("btn1");
+		var oDiv = document.getElementById("div1");
+		var oDiv2 = document.getElementById("div2");
+		var oDiv3 = document.getElementById("div3");
+		var oDiv4 = document.getElementById("div4");
+		
+		//alert(Math.round(parseFloat(getStyleValue(oDiv2, "opacity")) * 100));
+
+		oBtn.onclick = function (){
+			//move2(300);
+			move(oDiv, "width", 500);
+		};
+
+		oDiv2.onmouseover = function (){
+			move(this, "opacity", 100);
+		};
+		oDiv2.onmouseout = function (){
+			move(this, "opacity", 30);
+		};
+		oDiv3.onmouseover = function (){
+			move(this, "opacity", 100);
+		};
+		oDiv3.onmouseout = function (){
+			move(this, "opacity", 30);
+		};
+		oDiv4.onmouseover = function (){
+			move(this, "opacity", 100);
+		};
+		oDiv4.onmouseout = function (){
+			move(this, "opacity", 30);
+		};
+
+		function getStyleValue(obj, name){
+			if(obj.currentStyle){
+				return obj.currentStyle[name];
+			}else{
+				return getComputedStyle(obj, false)[name];
+			}
+		}
+		function move(obj, attr, iTarget){
+			//alert(typeof oDiv.offsetLeft);
+			clearInterval(obj.timer);
+			obj.timer = setInterval(function (){
+				var currentValue = 0;
+				if(attr == "opacity"){
+					currentValue = Math.round(parseFloat(getStyleValue(obj, attr)) * 100);
+				}else{
+					currentValue = parseInt(getStyleValue(obj, attr));
+				}
+
+				var speed = (iTarget - currentValue) / 6;
+				speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);	
+				if(iTarget == currentValue){
+					clearInterval(obj.timer);
+				}else{
+					if(attr == "opacity"){
+						obj.style.filter = "alpha(opacity:"+(currentValue + speed)+")";
+						obj.style.opacity = (currentValue + speed)/100;
+					}else{
+						obj.style[attr] = currentValue + speed + "px";
+					}					
+				}
+			}, 30);
+		}
+
+		function move2(iTarget){
+			clearInterval(timer);
+			timer = setInterval(function (){
+				var speed = (iTarget - oDiv.offsetLeft) / 10;
+				speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+				
+				if(oDiv.offsetLeft == iTarget){
+					clearInterval(timer);
+				}else{
+					oDiv.style.left = oDiv.offsetLeft + speed + "px";
+					//document.title = oDiv.offsetLeft;
+				}
+			}, 30);
+		}
+	};
+	</script>
+</head>
+<body>
+<input id="btn1" name="move" type="button" value="开始运动">
+<div id="div1"></div>
+<div id="line"></div>
+<div id="div2"></div>
+<div id="div3"></div>
+<div id="div4"></div>
+</body>
+</html>

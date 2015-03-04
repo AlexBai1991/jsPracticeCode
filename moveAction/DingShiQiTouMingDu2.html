@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>定时器运动基础透明度实例--面向对象实例</title>
+	<meta charset="UTF-8">
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#div1{
+		width: 200px;
+		height: 200px;
+		background: red;
+		filter: alpha(opacity:30);
+		opacity: 0.3;
+	}	
+	</style>
+	<script>
+	window.onload = function (){
+		new MoveAction("div1");
+	};
+//*************************面向对象*************************
+	//构造函数
+	function MoveAction(id){
+
+		var _this = this;
+		this.timer = null;
+		this.opacity = 30;
+
+		this.oDiv = document.getElementById(id);
+
+		this.oDiv.onmouseover = function (){
+			_this.startMove2(100, this);		//透明度增大
+		};
+		this.oDiv.onmouseout = function (){
+			_this.startMove2(30, this);			//透明度减小
+		};
+	};
+	//为原型添加方法
+	MoveAction.prototype.startMove2 = function (iTarget, oDiv){
+		var _this = this;
+		clearInterval(this.timer);
+		//alert(this.opacity);
+		this.timer = setInterval(function(){
+			var speed = (iTarget - _this.opacity)/10;
+			speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+			if(_this.opacity == iTarget){
+				clearInterval(_this.timer);
+			}else{
+				_this.opacity +=  speed;
+				oDiv.style.filter = "alpha(opacity:"+_this.opacity+")";
+				oDiv.style.opacity = _this.opacity/100;	
+			}			
+		}, 30);
+
+	}
+//*************************面向过程*************************
+	function startMove(iTarget){
+		var div1 = document.getElementById('div1');
+		var speeed = 0;
+		if(opacity < iTarget){
+			speed = 5;
+		}else{
+			speed = -5;
+		}
+
+		clearInterval(timer);
+		timer = setInterval(function(){
+			if(opacity == iTarget){
+				clearInterval(timer);
+			}else{
+				opacity += speed;
+				//console.log(opacity);
+				div1.style.filter = 'alpha(opacity:'+opacity+')';
+				div1.style.opacity = opacity/100;
+			}
+		}, 30)
+	}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+</body>
+</html>

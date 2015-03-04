@@ -15,21 +15,36 @@
 		filter: alpha(opacity:30);
 		opacity: 0.3;
 	}
+	#div2{
+		margin-top: 50px;
+		width: 200px;
+		height: 200px;
+		background: red;
+		filter: alpha(opacity:30);
+		opacity: 0.3;
+	}
 	
 	</style>
 	<script>
 	window.onload = function(){
 		var div1 = document.getElementById('div1');
 		div1.onmouseover = function (){
-			startMove2(100);		//透明度增大
+			startMove2(div1, 100);		//透明度增大
 		};
 		div1.onmouseout = function (){
-			startMove2(30);	//透明度减小
+			startMove2(div1, 30);	//透明度减小
+		};
+		
+		var div2 = document.getElementById('div2');
+		div2.onmouseover = function (){
+			startMove2(div2, 100);		//透明度增大
+		};
+		div2.onmouseout = function (){
+			startMove2(div2, 30);	//透明度减小
 		};
 	};
 
-	var timer = null;	//定时器变量
-	var opacity = 30;	//透明度变量
+	//var timer = null;	//定时器变量
 
 	function startMove(iTarget){
 		var div1 = document.getElementById('div1');
@@ -53,20 +68,31 @@
 		}, 30)
 	}
 
+	function getStyle(obj, name)
+	{
+		if(obj.currentStyle)
+		{
+			return obj.currentStyle[name];
+		}
+		else
+		{
+			return getComputedStyle(obj, false)[name];
+		}
+	}
+	function startMove2(obj, iTarget){
 
-	function startMove2(iTarget){
-		var div1 = document.getElementById('div1');
-
-		clearInterval(timer);
-		timer = setInterval(function(){
+		clearInterval(obj.timer);
+		obj.timer = setInterval(function(){
+			console.log(obj.timer);
+			var opacity = Math.round(parseFloat(getStyle(obj, "opacity") * 100));
 			var speed = (iTarget - opacity)/10;
 			speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
 			if(opacity == iTarget){
-				clearInterval(timer);
+				clearInterval(obj.timer);
 			}else{
 				opacity +=  speed;
-				div1.style.filter = "alpha(opacity:"+opacity+")";
-				div1.style.opacity = opacity/100;	
+				obj.style.filter = "alpha(opacity:"+opacity+")";
+				obj.style.opacity = opacity/100;	
 			}
 			
 		}, 30);
@@ -78,5 +104,6 @@
 </head>
 <body>
 	<div id="div1"></div>
+	<div id="div2"></div>
 </body>
 </html>
