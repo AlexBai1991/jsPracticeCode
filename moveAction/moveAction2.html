@@ -1,106 +1,147 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>moveAction -- 面向对象</title>
-	<meta charset="utf-8">
+    <title>moveAction -- 面向对象</title>
+    <meta charset="utf-8">
 
-	<style type="text/css">
-	*{margin: 0; padding: 0;}
-	#div1{width: 200px; height: 200px; background: #DDD; position: absolute; left: 600px; top: 30px;}
-	#div2{width: 100px; height: 100px; background: red; margin-top: 50px; opacity: 0.3; filter: alpha(opacity:30);}
-	#div3{width: 100px; height: 100px; background: red; margin-top: 50px; opacity: 0.3; filter: alpha(opacity:30);}
-	#div4{width: 100px; height: 100px; background: red; margin-top: 50px; opacity: 0.3; filter: alpha(opacity:30);}
-	#line{position: absolute; left: 300px; top: 0; height: 300px;width: 1px; background: #DDD;}
-	</style>
-	<script>
-	window.onload = function (){
-		var oBtn  = document.getElementById("btn1");
-		
-		var maction = new MoveAction("div1", "left");	
-		oBtn.onclick = function (){
-			maction.move(300);
-		};
+    <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    #div1 {
+        width: 200px;
+        height: 200px;
+        background: #DDD;
+        position: absolute;
+        left: 600px;
+        top: 30px;
+    }
+    #div2 {
+        width: 100px;
+        height: 100px;
+        background: red;
+        margin-top: 50px;
+        opacity: 0.3;
+        filter: alpha(opacity: 30);
+    }
+    #div3 {
+        width: 100px;
+        height: 100px;
+        background: red;
+        margin-top: 50px;
+        opacity: 0.3;
+        filter: alpha(opacity: 30);
+    }
+    #div4 {
+        width: 100px;
+        height: 100px;
+        background: red;
+        margin-top: 50px;
+        opacity: 0.3;
+        filter: alpha(opacity: 30);
+    }
+    #line {
+        position: absolute;
+        left: 300px;
+        top: 0;
+        height: 300px;
+        width: 1px;
+        background: #DDD;
+    }
+    </style>
+    <script>
+    window.onload = function() {
+        var oBtn = document.getElementById("btn1");
 
-		var moveAct2 = new MoveAction("div2", "width");
-		var moveAct3 = new MoveAction("div3", "width");
-		var moveAct4 = new MoveAction("div4", "width");
-		
-		div2.onmouseover = function (){
-			moveAct2.move(500);
-		};
-		div2.onmouseout = function (){
-			moveAct2.move(100);
-		};
-		div3.onmouseover = function (){
-			moveAct3.move(500);
-		};
-		div3.onmouseout = function (){
-			moveAct3.move(100);
-		};
-		div4.onmouseover = function (){
-			moveAct4.move(500);
-		};
-		div4.onmouseout = function (){
-			moveAct4.move(100);
-		};
-		
-	};
-	//构造函数
-	function MoveAction(id, attr){
-		var _this = this;
-		
-		//在构造函数里所有的_this属性和方法不是共享的
-		this.timer = null;
-		this.oDiv = document.getElementById(id);
-		this.attr = attr;				
-		
-		this.oDiv.onclick = function (){
-			//_this.move(attr, iTarget);
-		};
-	}
-	//为原型添加方法 move 和 getStyleValue
-	MoveAction.prototype = {	
-		move: function (iTarget){
-			var _this = this;
-			clearInterval(this.timer);
-			this.timer = setInterval(function (){
-				console.log(_this.timer);
-				var currentValue = 0;
-				if(_this.attr == "opacity"){
-					currentValue = Math.round(parseFloat(_this.getStyleValue(_this.oDiv, _this.attr)) * 100);
-				}else{
-					currentValue = parseInt(_this.getStyleValue(_this.oDiv, _this.attr));
-				}
-				var speed = (iTarget - currentValue) / 9;
-				speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);	
-				if(iTarget == currentValue){					
-					clearInterval(_this.timer);
-				}else{
-					if(_this.attr == "opacity"){
-						_this.oDiv.style.filter = "alpha(opacity:"+(currentValue + speed)+")";
-						_this.oDiv.style.opacity = (currentValue + speed)/100;
-					}else{
-						_this.oDiv.style[_this.attr] = currentValue + speed + "px";
-					}					
-				}
-			}, 30);
-		},
-		getStyleValue: function (obj, name){
-			if(obj.currentStyle){
-				return obj.currentStyle[name];
-			}else{
-				return getComputedStyle(obj, false)[name];
-			}
-		}
-	};
-	</script>
+        var maction = new MoveAction("div1", "left");
+        oBtn.onclick = function() {
+            maction.move(300);
+        };
+
+        var moveAct2 = new MoveAction("div2", "width");
+        var moveAct3 = new MoveAction("div3", "width");
+        var moveAct4 = new MoveAction("div4", "width");
+
+        div2.onmouseover = function() {
+            moveAct2.move(500);
+        };
+        div2.onmouseout = function() {
+            moveAct2.move(100);
+        };
+        div3.onmouseover = function() {
+            moveAct3.move(500);
+        };
+        div3.onmouseout = function() {
+            moveAct3.move(100);
+        };
+        div4.onmouseover = function() {
+            moveAct4.move(500);
+        };
+        div4.onmouseout = function() {
+            moveAct4.move(100);
+        };
+
+    };
+    //构造函数
+    function MoveAction(id, attr) {
+            var _this = this;
+
+            //在构造函数里所有的_this属性和方法不是共享的
+            this.timer = null;
+            this.oDiv = document.getElementById(id);
+            this.attr = attr;
+
+            this.oDiv.onclick = function() {
+                //_this.move(attr, iTarget);
+            };
+        }
+        //为原型添加方法 move 和 getStyleValue
+    MoveAction.prototype = {
+        move: function(iTarget) {
+            var _this = this;
+            clearInterval(this.timer);
+            this.timer = setInterval(function() {
+                console.log(_this.timer);
+                var currentValue = 0;
+                if (_this.attr == "opacity") {
+                    currentValue = Math.round(parseFloat(_this.getStyleValue(_this.oDiv, _this.attr)) * 100);
+                } else {
+                    currentValue = parseInt(_this.getStyleValue(_this.oDiv, _this.attr));
+                }
+                var speed = (iTarget - currentValue) / 9;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                if (iTarget == currentValue) {
+                    clearInterval(_this.timer);
+                } else {
+                    if (_this.attr == "opacity") {
+                        _this.oDiv.style.filter = "alpha(opacity:" + (currentValue + speed) + ")";
+                        _this.oDiv.style.opacity = (currentValue + speed) / 100;
+                    } else {
+                        _this.oDiv.style[_this.attr] = currentValue + speed + "px";
+                    }
+                }
+            }, 30);
+        },
+        getStyleValue: function(obj, name) {
+            if (obj.currentStyle) {
+                return obj.currentStyle[name];
+            } else {
+                return getComputedStyle(obj, false)[name];
+            }
+        }
+    };
+    </script>
 </head>
+
 <body>
-<input id="btn1" name="move" type="button" value="开始运动">
-<div id="div1"></div>
-<div id="line"></div>
-<div id="div2"></div>
-<div id="div3"></div>
-<div id="div4"></div>
+    <input id="btn1" name="move" type="button" value="开始运动">
+    <div id="div1"></div>
+    <div id="line"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <div id="div4"></div>
 </body>
+
 </html>
