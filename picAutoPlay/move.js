@@ -1,3 +1,22 @@
+;(function (win) {
+	
+	function getStyle (obj, name) {
+		if (obj.currentStyle) {
+			return obj.currentStyle[name];
+		} else {
+			return getComputedStyle(obj, false)[name];
+		}
+	}
+
+	// function getByClass (oParent, sClass) {
+	// 	var
+	// }
+
+	win.Util = {
+		getStyle: getStyle
+	}
+})(window);
+
 function getStyle(obj, name)
 {
 	if(obj.currentStyle)

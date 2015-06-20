@@ -1,0 +1,706 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"in",
+				"input"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"border",
+				"border_width"
+			],
+			[
+				"mar",
+				"margin-right"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"arg",
+				"args"
+			],
+			[
+				"can",
+				"canMoveDown"
+			],
+			[
+				"canm",
+				"canMoveUp"
+			],
+			[
+				"no",
+				"noSpace"
+			],
+			[
+				"SHO",
+				"showMoveWithAnimation"
+			],
+			[
+				"a",
+				"animated"
+			],
+			[
+				"bor",
+				"board"
+			],
+			[
+				"row",
+				"row2"
+			],
+			[
+				"get",
+				"getPosTop"
+			],
+			[
+				"to",
+				"toy"
+			],
+			[
+				"GET",
+				"getPosLeft"
+			],
+			[
+				"from",
+				"fromy"
+			],
+			[
+				"clo",
+				"col2"
+			],
+			[
+				"col",
+				"col1"
+			],
+			[
+				"b",
+				"board"
+			],
+			[
+				"num",
+				"number"
+			],
+			[
+				"ran",
+				"randomX"
+			],
+			[
+				"rando",
+				"randomY"
+			],
+			[
+				"rand",
+				"randomY"
+			],
+			[
+				"numer",
+				"theNumberCell"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"margin",
+				"margin"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"WIN",
+				"WINDOW_WIDTH"
+			],
+			[
+				"MA",
+				"MARGIN_LEFT"
+			],
+			[
+				"win",
+				"WINDOW_WIDTH"
+			],
+			[
+				"ra",
+				"RADIUS"
+			],
+			[
+				"window",
+				"WINDOW_HEIGHT"
+			],
+			[
+				"fill",
+				"fillStyle"
+			],
+			[
+				"cur",
+				"curSeconds"
+			],
+			[
+				"v",
+				"vy"
+			],
+			[
+				"arc",
+				"arcY"
+			],
+			[
+				"M",
+				"Math"
+			],
+			[
+				"WIND",
+				"WINDOW_HEIGHT"
+			],
+			[
+				"c",
+				"curShowTimeSeconds"
+			],
+			[
+				"MAR",
+				"MARGIN_TOP"
+			],
+			[
+				"ma",
+				"MARGIN_TOP"
+			],
+			[
+				"color",
+				"colorIndex"
+			],
+			[
+				"banenr",
+				"bannerSelected"
+			],
+			[
+				"banner",
+				"bannerSelected"
+			],
+			[
+				"slide",
+				"slideUp"
+			],
+			[
+				"bann",
+				"bannerNav"
+			],
+			[
+				"nav",
+				"navItem"
+			],
+			[
+				"barndSaleI",
+				"brandSaleItemWidth"
+			],
+			[
+				"brand",
+				"brandSaleCon"
+			],
+			[
+				"brandS",
+				"brandSaleNav"
+			],
+			[
+				"h",
+				"h2	Tag"
+			],
+			[
+				"search",
+				"searchTable"
+			],
+			[
+				"pro",
+				"prop"
+			],
+			[
+				"sele",
+				"selectAllCheckbox"
+			],
+			[
+				"chek",
+				"checkbox"
+			],
+			[
+				"tb",
+				"tbody"
+			],
+			[
+				"has",
+				"hasSelected"
+			],
+			[
+				"bore",
+				"border-bottom"
+			],
+			[
+				"ceh",
+				"cheOptions"
+			],
+			[
+				"sen",
+				"sendBtn"
+			],
+			[
+				"che",
+				"cheOptions"
+			],
+			[
+				"sle",
+				"selectBtn"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"remove",
+				"removeClass"
+			],
+			[
+				"err",
+				"errInput"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"padding",
+				"padding-left"
+			],
+			[
+				"re",
+				"requiredErrSpan"
+			],
+			[
+				"r",
+				"required"
+			],
+			[
+				"form",
+				"formTips"
+			],
+			[
+				"v_cn",
+				"v_contentLis"
+			],
+			[
+				"fl",
+				"float"
+			],
+			[
+				"p",
+				"padding"
+			],
+			[
+				"bl",
+				"block"
+			],
+			[
+				"pic",
+				"picNumItems"
+			],
+			[
+				"picNum",
+				"picNumItems"
+			],
+			[
+				"pi",
+				"picCon"
+			],
+			[
+				"margin-",
+				"margin-right"
+			],
+			[
+				"ul",
+				"ulPic"
+			],
+			[
+				"au",
+				"autoPlay"
+			],
+			[
+				"li",
+				"liLeft"
+			],
+			[
+				"ov",
+				"overflow"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"list",
+				"list-style"
+			],
+			[
+				"l",
+				"li	Tag"
+			],
+			[
+				"child",
+				"childUl"
+			],
+			[
+				"getEle",
+				"getElementsByTagName"
+			],
+			[
+				"mai",
+				"margin-top"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"mac",
+				"match"
+			],
+			[
+				"macth",
+				"matchs"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 203.0,
+		"last_filter": "paack i",
+		"selected_items":
+		[
+			[
+				"paack i",
+				"Package Control: Install Package"
+			],
+			[
+				"set js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"set h",
+				"Set Syntax: HTML"
+			],
+			[
+				"set user",
+				"Preferences: SublimeLinter Settings – User"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"set uer",
+				"Preferences: Settings - User"
+			],
+			[
+				"setde",
+				"Preferences: Settings - Default"
+			],
+			[
+				"package control in",
+				"Package Control: Install Package"
+			],
+			[
+				"seth",
+				"Set Syntax: HTML"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"key",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"key b",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"packin",
+				"Package Control: Install Package"
+			],
+			[
+				"package in",
+				"Package Control: Install Package"
+			],
+			[
+				"htm",
+				"Set Syntax: HTML"
+			],
+			[
+				"set ja",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"Package Control: i",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 579.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib2,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();os.makedirs(ipp) if not os.path.exists(ipp) else None;open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read())",
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/AlexBai/Documents/jsCode/ngmis/static/tab_recommend/view/recommend_config/recommend_config.html",
+		"/Volumes/baijinguo/myProjects/ngmis4-23/forum_13-1-2454-1_BRANCH/static/tab_recommend/view/recommend_config/recommend_config_controller.js",
+		"/Users/AlexBai/Documents/jsCode/ngmis/template/tab_recommend/tab_recommend.php",
+		"/Users/AlexBai/Documents/jsCode/ngmis/static/tab_recommend/app.js",
+		"/Users/AlexBai/gitRepository/jsPracticeCode/controller.js",
+		"/Users/AlexBai/gitRepository/jsPracticeCode/angulartest.html",
+		"/Users/AlexBai/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/AlexBai/Library/Application Support/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/Users/AlexBai/gitRepository/jsPracticeCode/README.md",
+		"/Users/AlexBai/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/AlexBai/Library/Application Support/Sublime Text 3/Packages/JsFormat/Default (OSX).sublime-keymap",
+		"/Users/AlexBai/Library/Application Support/Sublime Text 3/Packages/Emmet/Default (OSX).sublime-keymap",
+		"/Users/AlexBai/Documents/jsPracticeCode/README.md",
+		"/Users/AlexBai/Documents/jsCode/digit.js",
+		"/Users/AlexBai/Documents/jsCode/optionCard/optionCard.html",
+		"/Users/AlexBai/Library/Application Support/Sublime Text 3/Packages/SublimeLinter/Default (OSX).sublime-keymap",
+		"/Users/AlexBai/Library/Application Support/Sublime Text 3/Packages/Alignment/Default (OSX).sublime-keymap",
+		"/Users/AlexBai/Library/Application Support/Sublime Text 3/Packages/Alignment/Base File.sublime-settings",
+		"/Users/AlexBai/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/AlexBai/Documents/jsPracticeCode/practice.html",
+		"/Users/AlexBai/Documents/jsPracticeCode/2048/scripts/showAnimation.js",
+		"/Users/AlexBai/Documents/jsPracticeCode/2048/scripts/support.js",
+		"/Users/AlexBai/Documents/jsPracticeCode/2048/styles/main.css",
+		"/Users/AlexBai/Documents/jsPracticeCode/2048/scripts/main.js",
+		"/Users/AlexBai/Documents/jsPracticeCode/2048/index.html",
+		"/Users/AlexBai/Documents/jsPracticeCode/html5/canvas/canvas3.html",
+		"/Users/AlexBai/Downloads/digit.js",
+		"/Users/AlexBai/.ShadowsocksX/gfwlist.js",
+		"/Users/AlexBai/Documents/jsPracticeCode/cssLayout/clearfloat.html",
+		"/Users/AlexBai/Documents/jsPracticeCode/html5/canvas/scripts/countDown.js",
+		"/Users/AlexBai/Documents/jsPracticeCode/html5/canvas/canvas2.html",
+		"/Users/AlexBai/Documents/jsPracticeCode/html5/canvas/canvas.html",
+		"/Users/AlexBai/Documents/jsPracticeCode/dianshang/index.html",
+		"/Users/AlexBai/Documents/jsPracticeCode/jQuery/table2.html",
+		"/Users/AlexBai/Documents/jsPracticeCode/jQuery/table.html",
+		"/Users/AlexBai/Documents/jsPracticeCode/jQuery/checkbox2.html",
+		"/Users/AlexBai/Documents/jsPracticeCode/jQuery/checkbox.html",
+		"/Users/AlexBai/Documents/jsPracticeCode/jQuery/formValidate.html",
+		"/Users/AlexBai/Documents/jsPracticeCode/jQuery/animateExg.html",
+		"/Users/AlexBai/Documents/jsPracticeCode/dianshang/styles/main.css",
+		"/Users/AlexBai/Documents/jsPracticeCode/dianshang/scripts/tooltip.js",
+		"/Users/AlexBai/Documents/jsPracticeCode/transparent.html",
+		"/Users/AlexBai/Documents/jsPracticeCode/dianshang/styles/reset.css",
+		"/Users/AlexBai/Documents/jsPracticeCode/dianshang/scripts/banner.js",
+		"/Users/AlexBai/Documents/jsCode/demo/Ch8/scripts/ad.js",
+		"/Users/AlexBai/Documents/jsPracticeCode/dianshang/scripts/headerNav.js",
+		"/Users/AlexBai/Documents/jsPracticeCode/dianshang/scripts/changeTheme.js",
+		"/Users/AlexBai/Documents/jsPracticeCode/dianshang/styles/themes/theme0.css",
+		"/Users/AlexBai/Documents/jsPracticeCode/dianshang/scripts/inputSearch.js",
+		"/Users/AlexBai/Documents/jsCode/demo/Ch6/jsp/demo1-javascript/test.jsp",
+		"/Users/AlexBai/Documents/jsCode/demo/Ch4/10-案例演示/style.css",
+		"/Users/AlexBai/Documents/jsPracticeCode/jQuery/navCard.html",
+		"/Users/AlexBai/Downloads/jquery-1.11.2.js",
+		"/Users/AlexBai/Documents/AppCanPro/README.md",
+		"/Users/AlexBai/Documents/jsPracticeCode/moveAction/DingShiQiXuanFuKuang.html",
+		"/Users/AlexBai/Documents/jsCode/picAutoPlay/picAutoPlay.html",
+		"/Users/AlexBai/Documents/jsCode/navMenu/navMenuJQuery.html",
+		"/Users/AlexBai/Documents/jsCode/navMenu/navMenuJs.html",
+		"/Users/AlexBai/Documents/jsCode/navMenuJs.html",
+		"/Users/AlexBai/Library/Application Support/Sublime Text 3/Packages/Emmet/Emmet.sublime-settings"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"myModule",
+			"        ",
+			"caption",
+			";\n",
+			"\",\n",
+			"animate",
+			"getSeconds",
+			"15",
+			"both",
+			"});\n",
+			"().",
+			"height",
+			";}",
+			"童鞋",
+			";}",
+			"\">\n",
+			";}",
+			">\n",
+			"!"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"!"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "controller.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 203.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

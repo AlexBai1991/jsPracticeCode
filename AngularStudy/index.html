@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html ng-app='myModule'>
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJS学习</title>
+	<style type="text/css">
+	.done-true {
+		text-decoration: line-through;
+		  color: grey;
+	}
+	</style>
+</head>
+<body>
+	<div class="container" ng-controller="HelloAngularController">
+		<h4>AngularJS</h4>
+		<p>姓名：{{ Person.name }}</p>
+		<p>年龄：{{ Person.age }}</p>
+		<p>家乡：{{ Person.add }}</p>
+		<h4>Form表单</h4>
+		<label for="username">用户名：</label>
+		<input type="integer" ng-model="userName" id="username" required>
+		<label for="password">密码：</label>
+		<input type="password" ng-model="password" id="password" required>
+		{{userName}}
+		{{password}}
+
+		<b>Invoice:</b>
+        <br>
+        <br>
+        <table>
+            <tr><td>Quantity</td><td>Cost</td></tr>
+            <tr>
+                <td><input type="integer" min="0" ng-model="qty" required ></td>
+                <td><input type="number" ng-model="cost" required ></td>
+            </tr>
+        </table>
+        <hr>
+        <b>Total:</b> {{qty * cost | currency}}
+
+        <br>
+        <h2>Todo</h2>
+	    <div>
+	      <span>{{remaining()}} of {{todoList.length}} remaining</span>
+	      [ <a href="" ng-click="archive()">archive</a> ]
+	      <ul class="unstyled">
+	        <li ng-repeat="todo in todoList">
+	          <input type="checkbox" ng-model="todo.done">
+	          <span class="done-{{todo.done}}">{{todo.text}}</span>
+	        </li>
+	      </ul>
+	      <form ng-submit="addTodo()">
+	        <input type="text" ng-model="todoText"  size="30"
+	               placeholder="add new todo here">
+	        <input class="btn-primary" type="submit" value="add">
+	      </form>
+	    </div>
+
+	    <br>
+	    <h4>新定义指令</h4>
+	    <div ng-model="content" contenteditable="true">内容可编辑</div>
+	    <pre>ngModelValue:{{content}}</pre>
+	    <button ng-click="reset()">重置内容区</button>
+	</div>
+	<div ng-controller="FirstController">
+		<p>Hello {{'alexbai' | uppercase}}</p>
+		<input type="text" ng-model="content" placeholder="please input some contents" />
+		<p>{{parseValue}}</p>
+		<br>
+		<div id="emailEditor">
+			<input type="email" ng-model="to" placeholder="收件人" />
+			<textarea ng-model="emailBody"></textarea>			
+		</div>
+		<div id="emailPreview">
+			<pre> {{previewText}} </pre>
+		</div>
+	</div>
+	<!-- js文件加载 -->
+	<script src="angular.js"></script>
+	<script src="controller.js"></script>
+	<script src="firstcontroller.js"></script>
+</body>
+</html>
